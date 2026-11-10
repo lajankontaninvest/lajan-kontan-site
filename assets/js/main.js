@@ -15,3 +15,24 @@
     }
   });
 })();
+
+// Outil de budget : l'iframe n'est chargée qu'au clic, pour ne rien charger de tiers à l'ouverture de la page.
+(function () {
+  var bouton = document.querySelector("[data-charger-outil]");
+  var zone = document.getElementById("outil");
+  if (!bouton || !zone) return;
+  bouton.hidden = false;
+  bouton.addEventListener("click", function () {
+    if (!zone.firstChild) {
+      var cadre = document.createElement("iframe");
+      cadre.src = bouton.getAttribute("data-charger-outil");
+      cadre.title = "Outil de budget Lajan Kontan";
+      cadre.loading = "lazy";
+      cadre.setAttribute("allow", "clipboard-write");
+      zone.appendChild(cadre);
+    }
+    zone.hidden = false;
+    bouton.hidden = true;
+    zone.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+})();
