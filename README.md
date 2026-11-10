@@ -11,3 +11,16 @@ Bienvenue sur le site de **Lajan Kontan**, mon projet pour parler d'éducation f
 ## Pour me retrouver
 
 [@lajankontaninvest](https://www.instagram.com/lajankontaninvest)
+
+## Version bêta du site
+
+Site statique (HTML, CSS, un peu de JavaScript), sans étape de build, sans cookie, sans traceur. Les polices sont hébergées dans le dépôt.
+
+- `index.html` : accueil
+- `accompagnements.html`, `apero-invest.html`, `a-propos.html`, `devenir-partenaire.html`
+- `transparence.html`, `mentions-legales.html`, `404.html`
+- `assets/` : styles, script du menu, polices, images
+
+Aperçu en local : `python3 -m http.server` puis ouvrir `http://localhost:8000`.
+
+La bêta est volontairement non indexée (`noindex` et `robots.txt`). Le dépôt étant public, aucune donnée sensible n'y est stockée.
