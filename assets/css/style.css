@@ -272,3 +272,8 @@ a:hover { text-decoration-color: currentColor; }
   content: counter(temps); display: block; margin-bottom: 0.25em;
   color: var(--teal); font: 700 2.4rem/1 var(--titre);
 }
+
+/* Photo du fondateur dans le hero */
+.hero__visuel--photo { aspect-ratio: 4 / 5; border-radius: 16px; object-fit: cover; }
+.avec-photo .photo { justify-self: end; max-width: 420px; }
+@media (max-width: 860px) { .avec-photo .photo { justify-self: start; } }
