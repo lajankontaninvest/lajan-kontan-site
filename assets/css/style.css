@@ -292,3 +292,34 @@ a:hover { text-decoration-color: currentColor; }
 .marque, .nav ul a, .nav .btn { white-space: nowrap; }
 .nav { gap: 22px; }
 .nav ul { gap: 20px; }
+
+/* Thème retenu : fond vert foncé de la charte (#146C4C) */
+:root {
+  --blanc: #146c4c;
+  --eau: #0f5a3f;
+  --encre: #ffffff;
+  --encre-douce: #cdeee1;
+  --teal: #42c190;
+  --trait: rgba(255, 255, 255, 0.24);
+  --ink-vert: #0b3d2c;
+}
+body { background: var(--blanc); color: #fff; }
+.bandeau-beta { color: var(--ink-vert); }
+.bloc--vert { background: #0b4a34; }
+.btn { background: var(--or); color: var(--ink-vert); }
+.btn:hover { background: #ffd04d; }
+.btn--clair { background: #fff; color: #146c4c; }
+.btn--clair:hover { background: #eef6f3; }
+.btn-lien { border-color: #fff; color: #fff; }
+.btn-lien:hover { background: rgba(255, 255, 255, 0.12); }
+.menu-bouton { border-color: #fff; color: #fff; }
+.preuves b { color: var(--or); }
+.encart { color: var(--ink-vert); }
+.a-completer { color: var(--ink-vert); }
+.formule { background: #0f5a3f; }
+.liste--non li::before { border-color: var(--or); }
+.pied { background: #0f5a3f; }
+a { text-decoration-color: var(--or); }
+:focus-visible { outline-color: #fff; }
+.formule li::before { color: var(--teal); }
+.formule li.non::before { color: var(--or); }
