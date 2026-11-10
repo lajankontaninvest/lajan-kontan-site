@@ -264,3 +264,11 @@ a:hover { text-decoration-color: currentColor; }
 .trio h2, .duo h2 { font-size: clamp(1.4rem, 1.1rem + 1vw, 1.8rem); }
 .bloc--vert .liste li::before { background: var(--or); }
 .bloc--vert .liste--non li::before { background: transparent; border-color: #fff; }
+
+/* Parcours : une progression, donc numérotée */
+.trio--parcours { counter-reset: temps; }
+.trio--parcours > * { counter-increment: temps; }
+.trio--parcours h3::before {
+  content: counter(temps); display: block; margin-bottom: 0.25em;
+  color: var(--teal); font: 700 2.4rem/1 var(--titre);
+}
