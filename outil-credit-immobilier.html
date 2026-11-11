@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simulateur de crédit immobilier | Lajan Kontan</title>
+<meta name="description" content="Estime la mensualité, le coût total et le taux d'endettement d'un crédit immobilier avec un simulateur pédagogique.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#146c4c">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/img/favicon-64.png">
+<link rel="apple-touch-icon" href="assets/img/logo-icone-192.png">
+<link rel="preload" href="assets/fonts/league-spartan-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/figtree-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/style.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<a class="saut" href="#contenu">Aller au contenu</a>
+<div class="bandeau-beta" role="note">Version bêta : le site est en construction, des pages et des informations vont évoluer.</div>
+<header class="entete">
+  <div class="conteneur entete__ligne">
+    <a class="marque" href="index.html"><img src="assets/img/logo-icone-64.png" width="48" height="48" alt="">Lajan Kontan</a>
+    <button class="menu-bouton" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="accompagnements.html">Accompagnements</a></li>
+        <li><a href="apero-invest.html">Apéro Invest</a></li>
+        <li class="menu-deroulant actif"><button type="button" class="menu-deroulant__bouton" aria-expanded="false" aria-controls="sous-ressources">Ressources</button><ul id="sous-ressources"><li><a href="outils.html">Outils</a></li><li><a href="podcast.html">Podcast</a></li><li><a href="youtube.html">YouTube</a></li><li><a href="guides.html">Guides</a></li><li><a href="apps.html">Les apps que nous utilisons</a></li></ul></li>
+        <li><a href="a-propos.html">À propos</a></li>
+      </ul>
+      <div class="nav__actions">
+        <a class="btn-contour" href="https://lajankontan.podia.com/" target="_blank" rel="noopener">Se connecter</a>
+        <a class="btn" href="https://calendly.com/lajankontaninvest/appel-decouverte-accompagnement-lajan-kontan" target="_blank" rel="noopener">Réserver un appel</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<main id="contenu">
+<section class="bloc">
+  <div class="conteneur etroit">
+    <p class="retour"><a href="outils.html">Tous les outils</a></p>
+    <h1>Simulateur de crédit immobilier</h1>
+    <p class="chapo">Estime ta mensualité, le coût total d'un crédit et ton taux d'endettement.</p>
+    <div class="actions">
+      <a class="btn" href="https://pret-maison-serein.lovable.app" target="_blank" rel="noopener">Ouvrir l'outil</a>
+      <button class="btn-lien" type="button" data-charger-outil="https://pret-maison-serein.lovable.app" data-cible="outil" hidden>Afficher l'outil sur cette page</button>
+    </div>
+    <div class="outil" id="outil" hidden></div>
+    <div class="encart"><p>Résultats donnés à titre indicatif : ce n'est ni une offre de crédit, ni un conseil personnalisé, ni une garantie d'obtention d'un prêt. Seul un établissement de crédit ou son intermédiaire peut te faire une offre. L'outil est hébergé sur un service tiers (lovable.app) et ne se charge que lorsque tu l'ouvres. <a href="transparence.html">Voir la page transparence</a>.</p></div>
+  </div>
+</section>
+
+<section class="bloc bloc--eau">
+  <div class="conteneur etroit texte">
+    <h2>Comment utiliser le simulateur</h2>
+    <dl class="definitions">
+      <dt>Montant emprunté (€)</dt><dd>La somme que tu empruntes, apport déjà déduit.</dd>
+      <dt>Taux d'intérêt annuel (%)</dt><dd>Le taux du crédit, hors assurance.</dd>
+      <dt>Durée du crédit (ans)</dt><dd>Le temps sur lequel tu rembourses.</dd>
+      <dt>Taux d'assurance emprunteur (%)</dt><dd>Un taux annuel appliqué au capital emprunté.</dd>
+      <dt>Revenus nets mensuels du foyer (€)</dt><dd>Sert à calculer le taux d'endettement.</dd>
+    </dl>
+    <h2>Comprendre les résultats</h2>
+    <dl class="definitions">
+      <dt>Mensualité, assurance incluse</dt><dd>Ce que tu paies chaque mois : remboursement du crédit plus assurance.</dd>
+      <dt>Coût total du crédit</dt><dd>Les intérêts plus l'assurance payés sur toute la durée, sans le capital emprunté.</dd>
+      <dt>Taux d'endettement</dt><dd>La part de tes revenus nets consacrée à tes mensualités. Les banques appliquent en général un plafond de 35 %, assurance comprise, fixé par le Haut Conseil de stabilité financière, avec quelques marges de flexibilité.</dd>
+      <dt>Répartition et échéancier</dt><dd>Un graphique et un tableau montrent, mois par mois, ce qui part en capital, en intérêts et en assurance.</dd>
+    </dl>
+    <h2>La formule</h2>
+    <p>Avec <i>K</i> le capital emprunté, <i>i</i> le taux annuel divisé par 12 et <i>n</i> le nombre de mensualités :</p>
+    <p class="calcul">Mensualité hors assurance = <i>K</i> × <i>i</i> ÷ (1 − (1 + <i>i</i>)<sup>−<i>n</i></sup>)</p>
+    <h2>Un exemple</h2>
+    <p>Pour emprunter 200 000 € sur 20 ans à 3,5 %, avec une assurance à 0,30 % par an :</p>
+    <ul class="liste">
+      <li>la mensualité hors assurance est d'environ 1 160 € ;</li>
+      <li>l'assurance représente 50 € par mois ;</li>
+      <li>la mensualité totale est donc d'environ 1 210 € ;</li>
+      <li>le coût total du crédit est d'environ 90 381 €, dont 78 381 € d'intérêts et 12 000 € d'assurance ;</li>
+      <li>avec 4 000 € de revenus nets par mois, le taux d'endettement est d'environ 30 %.</li>
+    </ul>
+    <h2>Ce que la simulation ne prend pas en compte</h2>
+    <ul class="liste liste--non">
+      <li>Les frais de dossier, de garantie et de notaire.</li>
+      <li>Les offres réelles des banques, qui dépendent de ton profil.</li>
+      <li>Le taux effectif global (TAEG), qui n'est pas calculé ici.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="bloc">
+  <div class="conteneur etroit">
+    <h2>Pour aller plus loin</h2>
+    <ul class="liste"><li><a href="outil-budget.html">Mon budget clair et net</a></li><li><a href="outil-money-date.html">Money Date</a></li><li><a href="outil-interets-composes.html">Calculatrice d'intérêts composés</a></li></ul>
+    <div class="actions"><a class="btn" href="https://calendly.com/lajankontaninvest/appel-decouverte-accompagnement-lajan-kontan" target="_blank" rel="noopener">Réserver un appel découverte</a></div>
+  </div>
+</section>
+</main>
+<footer class="pied">
+  <div class="conteneur">
+    <div class="pied__grille">
+      <div>
+        <div class="pied__marque"><img src="assets/img/logo-icone-64.png" width="44" height="44" alt="">Lajan Kontan</div>
+        <p>L'éducation financière aux Antilles-Guyane et ailleurs, sans jargon.</p>
+        <p><a href="https://www.instagram.com/lajankontaninvest" target="_blank" rel="noopener">@lajankontaninvest sur Instagram</a><br><a href="mailto:lajankontaninvest@gmail.com">lajankontaninvest@gmail.com</a></p>
+      </div>
+      <div>
+        <h2>Le site</h2>
+        <ul>
+          <li><a href="accompagnements.html">Accompagnements</a></li>
+          <li><a href="apero-invest.html">Apéro Invest</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="devenir-partenaire.html">Devenir partenaire</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Ressources</h2>
+        <ul>
+          <li><a href="outils.html">Outils</a></li>
+          <li><a href="podcast.html">Podcast</a></li>
+          <li><a href="youtube.html">YouTube</a></li>
+          <li><a href="guides.html">Guides</a></li><li><a href="apps.html">Les apps que nous utilisons</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Cadre</h2>
+        <ul>
+          <li><a href="transparence.html">Transparence et risques</a></li>
+          <li><a href="connexion.html">Espace élèves</a></li>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pied__avert">
+      <p>Lajan Kontan propose de l'information et de l'éducation financière. Ce site ne constitue ni un conseil en investissement, ni une recommandation personnalisée. Investir comporte un risque de perte en capital.</p>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

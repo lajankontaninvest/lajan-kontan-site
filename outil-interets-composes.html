@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculatrice d'intérêts composés | Lajan Kontan</title>
+<meta name="description" content="Visualise l'effet du temps et des versements réguliers sur ton épargne avec une calculatrice d'intérêts composés.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#146c4c">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/img/favicon-64.png">
+<link rel="apple-touch-icon" href="assets/img/logo-icone-192.png">
+<link rel="preload" href="assets/fonts/league-spartan-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/figtree-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/style.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<a class="saut" href="#contenu">Aller au contenu</a>
+<div class="bandeau-beta" role="note">Version bêta : le site est en construction, des pages et des informations vont évoluer.</div>
+<header class="entete">
+  <div class="conteneur entete__ligne">
+    <a class="marque" href="index.html"><img src="assets/img/logo-icone-64.png" width="48" height="48" alt="">Lajan Kontan</a>
+    <button class="menu-bouton" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="accompagnements.html">Accompagnements</a></li>
+        <li><a href="apero-invest.html">Apéro Invest</a></li>
+        <li class="menu-deroulant actif"><button type="button" class="menu-deroulant__bouton" aria-expanded="false" aria-controls="sous-ressources">Ressources</button><ul id="sous-ressources"><li><a href="outils.html">Outils</a></li><li><a href="podcast.html">Podcast</a></li><li><a href="youtube.html">YouTube</a></li><li><a href="guides.html">Guides</a></li><li><a href="apps.html">Les apps que nous utilisons</a></li></ul></li>
+        <li><a href="a-propos.html">À propos</a></li>
+      </ul>
+      <div class="nav__actions">
+        <a class="btn-contour" href="https://lajankontan.podia.com/" target="_blank" rel="noopener">Se connecter</a>
+        <a class="btn" href="https://calendly.com/lajankontaninvest/appel-decouverte-accompagnement-lajan-kontan" target="_blank" rel="noopener">Réserver un appel</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<main id="contenu">
+<section class="bloc">
+  <div class="conteneur etroit">
+    <p class="retour"><a href="outils.html">Tous les outils</a></p>
+    <h1>Calculatrice d'intérêts composés</h1>
+    <p class="chapo">Visualise l'effet du temps et des versements réguliers sur ton épargne.</p>
+    <div class="actions">
+      <a class="btn" href="https://sunny-growth.lovable.app" target="_blank" rel="noopener">Ouvrir l'outil</a>
+      <button class="btn-lien" type="button" data-charger-outil="https://sunny-growth.lovable.app" data-cible="outil" hidden>Afficher l'outil sur cette page</button>
+    </div>
+    <div class="outil" id="outil" hidden></div>
+    <div class="encart"><p>Cette illustration ne constitue pas une prévision de performance. La valeur réelle d'un placement peut évoluer à la hausse comme à la baisse, y compris à la perte du capital. L'outil est pédagogique, il ne remplace pas un conseil personnalisé. Il est hébergé sur un service tiers (lovable.app) et ne se charge que lorsque tu l'ouvres. <a href="transparence.html">Voir la page transparence</a>.</p></div>
+  </div>
+</section>
+
+<section class="bloc bloc--eau">
+  <div class="conteneur etroit texte">
+    <h2>C'est quoi les intérêts composés ?</h2>
+    <p>Avec les intérêts composés, les intérêts d'une période s'ajoutent à ton capital et produisent à leur tour des intérêts les périodes suivantes. Plus la durée est longue, plus cet effet cumulatif se voit. Avec des intérêts simples, seul le capital de départ produit des intérêts.</p>
+    <h2>Comment utiliser la calculatrice</h2>
+    <dl class="definitions">
+      <dt>Capital initial (€)</dt><dd>La somme dont tu pars.</dd>
+      <dt>Épargne mensuelle (€)</dt><dd>Ce que tu ajoutes chaque mois.</dd>
+      <dt>Horizon de placement (ans)</dt><dd>La durée sur laquelle tu fais la simulation.</dd>
+      <dt>Taux d'intérêt (%)</dt><dd>Le taux annuel que tu supposes. C'est une hypothèse de travail, pas une promesse : teste plusieurs taux, bas comme élevés, pour voir l'écart.</dd>
+      <dt>Capitalisation</dt><dd>La fréquence à laquelle les intérêts sont ajoutés au capital : chaque mois ou chaque année.</dd>
+    </dl>
+    <h2>Comprendre les résultats</h2>
+    <dl class="definitions">
+      <dt>Versements</dt><dd>Ce que tu as mis de ta poche : capital initial plus épargne mensuelle sur toute la durée.</dd>
+      <dt>Intérêts</dt><dd>Ce que la simulation ajoute grâce au taux que tu as saisi.</dd>
+      <dt>Capital final</dt><dd>Versements plus intérêts.</dd>
+    </dl>
+    <h2>La formule</h2>
+    <p>Pour une capitalisation mensuelle, avec <i>i</i> le taux annuel divisé par 12 et <i>n</i> le nombre de mois :</p>
+    <p class="calcul">Capital final = Capital initial × (1 + <i>i</i>)<sup><i>n</i></sup> + Épargne mensuelle × ((1 + <i>i</i>)<sup><i>n</i></sup> − 1) ÷ <i>i</i></p>
+    <p>Les conventions de calcul (versement en début ou en fin de mois, taux mensuel proportionnel ou équivalent) peuvent faire varier le résultat de quelques dizaines d'euros.</p>
+    <h2>Un exemple</h2>
+    <p>Tu pars de 10 000 €, tu ajoutes 100 € par mois pendant 20 ans, avec un taux supposé de 5 %. Tes versements totalisent 34 000 €. Tout ce qui s'y ajoute dans le capital final vient des intérêts de la simulation.</p>
+    <h2>Les limites de la simulation</h2>
+    <ul class="liste">
+      <li>Le taux est constant, alors que les marchés varient et peuvent baisser.</li>
+      <li>Les frais, la fiscalité et l'inflation ne sont pas pris en compte.</li>
+      <li>Le résultat est une illustration, pas une prévision de ce que tu obtiendras.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="bloc">
+  <div class="conteneur etroit">
+    <h2>Pour aller plus loin</h2>
+    <ul class="liste"><li><a href="outil-budget.html">Mon budget clair et net</a></li><li><a href="outil-money-date.html">Money Date</a></li><li><a href="outil-credit-immobilier.html">Simulateur de crédit immobilier</a></li></ul>
+    <div class="actions"><a class="btn" href="https://calendly.com/lajankontaninvest/appel-decouverte-accompagnement-lajan-kontan" target="_blank" rel="noopener">Réserver un appel découverte</a></div>
+  </div>
+</section>
+</main>
+<footer class="pied">
+  <div class="conteneur">
+    <div class="pied__grille">
+      <div>
+        <div class="pied__marque"><img src="assets/img/logo-icone-64.png" width="44" height="44" alt="">Lajan Kontan</div>
+        <p>L'éducation financière aux Antilles-Guyane et ailleurs, sans jargon.</p>
+        <p><a href="https://www.instagram.com/lajankontaninvest" target="_blank" rel="noopener">@lajankontaninvest sur Instagram</a><br><a href="mailto:lajankontaninvest@gmail.com">lajankontaninvest@gmail.com</a></p>
+      </div>
+      <div>
+        <h2>Le site</h2>
+        <ul>
+          <li><a href="accompagnements.html">Accompagnements</a></li>
+          <li><a href="apero-invest.html">Apéro Invest</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="devenir-partenaire.html">Devenir partenaire</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Ressources</h2>
+        <ul>
+          <li><a href="outils.html">Outils</a></li>
+          <li><a href="podcast.html">Podcast</a></li>
+          <li><a href="youtube.html">YouTube</a></li>
+          <li><a href="guides.html">Guides</a></li><li><a href="apps.html">Les apps que nous utilisons</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Cadre</h2>
+        <ul>
+          <li><a href="transparence.html">Transparence et risques</a></li>
+          <li><a href="connexion.html">Espace élèves</a></li>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pied__avert">
+      <p>Lajan Kontan propose de l'information et de l'éducation financière. Ce site ne constitue ni un conseil en investissement, ni une recommandation personnalisée. Investir comporte un risque de perte en capital.</p>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
