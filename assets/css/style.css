@@ -401,3 +401,46 @@ html:not(.js) .nav .menu-deroulant:hover > ul, html:not(.js) .nav .menu-deroulan
 .menu-deroulant__bouton { box-sizing: border-box; min-height: 38px; }
 
 .outil--audio iframe { height: 420px; }
+
+/* ===== Laji, la mascotte (dérivé de l'emblème, jamais à côté d'un lien d'affiliation) ===== */
+laji-mascotte { display: block; width: var(--laji-largeur, 160px); max-width: 100%; flex: none; }
+laji-mascotte[size="s"] { --laji-largeur: 110px; }
+laji-mascotte[size="m"] { --laji-largeur: 160px; }
+laji-mascotte[size="l"] { --laji-largeur: 200px; }
+laji-mascotte[align="right"] { margin-left: auto; }
+laji-mascotte img { width: 100%; height: auto; }
+@media (max-width: 760px) {
+  laji-mascotte[size="s"] { --laji-largeur: 90px; }
+  laji-mascotte[size="m"] { --laji-largeur: 120px; }
+  laji-mascotte[size="l"] { --laji-largeur: 150px; }
+}
+
+/* Titre de section avec Laji à droite ; sur mobile, Laji passe sous le texte */
+.avec-laji { display: flex; align-items: center; justify-content: space-between; gap: clamp(16px, 4vw, 48px); margin-bottom: clamp(24px, 4vw, 44px); }
+.avec-laji .en-tete-section { margin-bottom: 0; }
+.avec-laji--texte { align-items: flex-start; margin-bottom: 1.2em; }
+.avec-laji--texte > div > :last-child { margin-bottom: 0; }
+@media (max-width: 760px) {
+  .avec-laji { flex-direction: column; align-items: flex-start; gap: 16px; }
+}
+
+/* Animations : apparition douce, flottement très léger, petite réaction au survol ou au toucher */
+.laji-anime laji-mascotte { opacity: 0; transform: translateY(20px); }
+.laji-anime laji-mascotte.laji-visible {
+  opacity: 1; transform: none;
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.75, 0.2, 1);
+}
+laji-mascotte img { transition: rotate 0.25s ease, scale 0.25s ease; }
+.laji-anime laji-mascotte.laji-visible img { animation: laji-flotte 6s ease-in-out 0.9s infinite paused; }
+.laji-anime laji-mascotte.laji-actif img { animation-play-state: running; }
+@keyframes laji-flotte {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -6px; }
+}
+@media (hover: hover) {
+  laji-mascotte:hover img { rotate: -4deg; scale: 1.04; }
+}
+laji-mascotte:active img { scale: 1.06; }
+@media (prefers-reduced-motion: reduce) {
+  laji-mascotte, laji-mascotte img { opacity: 1 !important; transform: none !important; animation: none !important; transition: none !important; translate: none !important; rotate: none !important; scale: none !important; }
+}
