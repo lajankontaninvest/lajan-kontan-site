@@ -19,7 +19,8 @@ Site statique (HTML, CSS, un peu de JavaScript), sans étape de build, sans cook
 - `index.html` : accueil
 - `accompagnements.html`, `apero-invest.html`, `a-propos.html`, `devenir-partenaire.html`
 - `transparence.html`, `mentions-legales.html`, `404.html`
-- `assets/` : styles, script du menu, polices, images
+- `assets/` : styles, scripts (menu, Laji), polices, images
+- `assets/img/laji/` : illustrations de Laji (WebP en 320 et 640 px, même cadrage pour toutes). Ajouter une variante : déposer `laji-<clé>.webp` dans les deux dossiers puis ajouter une ligne dans `assets/js/laji.js` (liste `VARIANTES`).
 
 Aperçu en local : `python3 -m http.server` puis ouvrir `http://localhost:8000`.
 
