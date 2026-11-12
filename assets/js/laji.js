@@ -11,9 +11,9 @@
     reflexion: { alt: "Laji, la mascotte, réfléchit la main au menton, un point d'interrogation au-dessus de la tête." }
   };
   var TAILLES = {
-    s: "(max-width: 760px) 90px, 110px",
-    m: "(max-width: 760px) 120px, 160px",
-    l: "(max-width: 760px) 150px, 200px"
+    s: "(max-width: 760px) 64px, 80px",
+    m: "(max-width: 760px) 96px, 120px",
+    l: "(max-width: 760px) 120px, 160px"
   };
 
   if (!("customElements" in window)) return;
@@ -21,15 +21,27 @@
   var calme = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var observateur = null;
 
+  // Laji reste visible quoi qu'il arrive. Hors écran au chargement, il attend puis apparaît en douceur
+  // au premier passage. Un délai de sécurité le fait apparaître même si l'observateur ne répond pas.
+  function reveler(el) {
+    el.removeAttribute("data-attente");
+    el.setAttribute("data-apparition", "");
+    if (observateur) observateur.unobserve(el);
+  }
+
   if (!calme && "IntersectionObserver" in window) {
-    document.documentElement.classList.add("laji-anime");
     observateur = new IntersectionObserver(function (entrees) {
-      entrees.forEach(function (e) {
-        // Apparition au premier passage, puis le flottement se met en pause hors de l'écran.
-        if (e.isIntersecting) e.target.classList.add("laji-visible", "laji-actif");
-        else e.target.classList.remove("laji-actif");
-      });
-    }, { threshold: 0.25 });
+      entrees.forEach(function (e) { if (e.isIntersecting) reveler(e.target); });
+    }, { threshold: 0.2 });
+  }
+
+  function preparerApparition(el) {
+    if (calme || !observateur) return;
+    var r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight * 0.9) { el.setAttribute("data-apparition", ""); return; }
+    el.setAttribute("data-attente", "");
+    observateur.observe(el);
+    setTimeout(function () { if (el.hasAttribute("data-attente")) reveler(el); }, 6000);
   }
 
   function construireImage(el) {
@@ -51,7 +63,7 @@
   customElements.define("laji-mascotte", class extends HTMLElement {
     connectedCallback() {
       construireImage(this);
-      if (observateur) observateur.observe(this);
+      preparerApparition(this);
     }
     disconnectedCallback() {
       if (observateur) observateur.unobserve(this);
